@@ -1,0 +1,10 @@
+requests
+google-auth
+google-auth-httplib2
+google-api-core
+python-dotenv
+pyttsx3
+sounddevice
+scipy
+numpy
+

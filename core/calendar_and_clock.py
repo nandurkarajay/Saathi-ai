@@ -18,6 +18,22 @@ logging.basicConfig(
 )
 
 # Intent patterns for time/date queries - comprehensive patterns for elderly users
+DATETIME_PATTERNS = [
+    r"(?:what|tell me|give me)(?:'s| is)?(?: the)? (?:current )?(?:time and date|date and time)",
+    r"what(?:'s| is) today's date and time",
+    r"tell me (?:the |today's )?(?:time and date|date and time)",
+    r"current time and date",
+    r"what time and date is it",
+]
+
+DATETIME_DAY_PATTERNS = [
+    r"(?:what|tell me|give me)(?:'s| is)?(?: the)? (?:current )?(?:time,? date,? and day|date,? time,? and day)",
+    r"tell me (?:the )?(?:time,? date,? and day|date,? time,? and day) (?:today|now)",
+    r"what(?:'s| is) today's date,? time,? and day",
+    r"tell me everything about (?:today|now|the current time)",
+    r"what day,? date,? and time is it",
+]
+
 TIME_PATTERNS = [
     r"what(?:'s| is) the time",
     r"tell me the time",
@@ -80,6 +96,14 @@ def detect_day_intent(text: str) -> bool:
 def detect_calendar_intent(text: str) -> bool:
     """Check if input contains a calendar-related query."""
     return any(re.search(pattern, text.lower()) for pattern in CALENDAR_PATTERNS)
+
+def detect_datetime_intent(text: str) -> bool:
+    """Check if input contains a combined date and time query."""
+    return any(re.search(pattern, text.lower()) for pattern in DATETIME_PATTERNS)
+
+def detect_datetime_day_intent(text: str) -> bool:
+    """Check if input contains a combined date, time and day query."""
+    return any(re.search(pattern, text.lower()) for pattern in DATETIME_DAY_PATTERNS)
 
 def get_current_time() -> Tuple[str, str]:
     """
@@ -220,7 +244,20 @@ def process_time_query(text: str) -> Optional[Tuple[str, str]]:
         
         # First try exact pattern matching
         try:
-            if detect_date_intent(text):  # Check date first since it's more specific
+            if detect_datetime_day_intent(text):  # Check combined date, time and day first
+                logging.info("DateTime and Day intent detected")
+                time_spoken, time_display = get_current_time()
+                date_spoken, date_display = get_current_date()
+                day_spoken, _ = get_current_day()
+                return (f"{time_spoken}. {date_spoken}. {day_spoken}", 
+                       f"{time_display}\n{date_display}")
+            elif detect_datetime_intent(text):  # Check combined date and time
+                logging.info("DateTime intent detected")
+                time_spoken, time_display = get_current_time()
+                date_spoken, date_display = get_current_date()
+                return (f"{time_spoken}. {date_spoken}", 
+                       f"{time_display}\n{date_display}")
+            elif detect_date_intent(text):  # Check date first since it's more specific
                 logging.info("Date intent detected")
                 return get_current_date()
             elif detect_time_intent(text):
@@ -234,7 +271,20 @@ def process_time_query(text: str) -> Optional[Tuple[str, str]]:
                 return get_month_calendar()
             
             # If no exact match, try partial matching for common words
-            if any(word in text for word in ['date', 'today', 'day', 'month']):
+            if all(word in text for word in ['time', 'date', 'day']):  # Check for all three keywords
+                logging.info("Partial datetime and day match detected")
+                time_spoken, time_display = get_current_time()
+                date_spoken, date_display = get_current_date()
+                day_spoken, _ = get_current_day()
+                return (f"{time_spoken}. {date_spoken}. {day_spoken}", 
+                       f"{time_display}\n{date_display}")
+            elif 'time' in text and 'date' in text:  # Check for combined time and date keywords
+                logging.info("Partial datetime match detected")
+                time_spoken, time_display = get_current_time()
+                date_spoken, date_display = get_current_date()
+                return (f"{time_spoken}. {date_spoken}", 
+                       f"{time_display}\n{date_display}")
+            elif any(word in text for word in ['date', 'today', 'day', 'month']):
                 logging.info("Partial date match detected")
                 return get_current_date()
             elif any(word in text for word in ['time', 'clock', 'hour']):

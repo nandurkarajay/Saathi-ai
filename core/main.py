@@ -11,11 +11,20 @@ project_root = Path(__file__).resolve().parent.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
+import sys
+from pathlib import Path
+
+# Add the project root to sys.path
+project_root = Path(__file__).resolve().parent.parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
 from core.voice_input import record_audio
 from core.voice_input import transcribe_audio
 from core.llm_gemma import query_gemma
 from core.tts_output import speak_text, text_to_speech
 from core.calendar_and_clock import process_time_query
+from core.task_scheduler import start_scheduler  # Import task scheduler
 import logging
 
 # Configure logging
@@ -169,8 +178,13 @@ def sathi_interaction():
 
 def sathi_assistant():
     """
+    Starts task scheduler and initiates main conversation loop:
     Waits for wake word → Greets → Continuous conversation
     """
+    # Start the task scheduler in background
+    start_scheduler()
+    logging.info("Task scheduler started - monitoring for reminders")
+    
     print("Sathi AI is running!")
     print(" Say 'Hey Sathi' to wake me up...\n")
 

@@ -2,6 +2,7 @@ requests
 google-auth
 google-auth-httplib2
 google-api-core
+google-generativeai
 python-dotenv
 pyttsx3
 sounddevice
@@ -9,3 +10,5 @@ scipy
 numpy
 flask==3.0.0
 schedule==1.2.0
+llama-cpp-python
+pygame

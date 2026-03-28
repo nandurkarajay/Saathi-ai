@@ -1,0 +1,11 @@
+{
+  "date": "2026-03-26",
+  "requests_made": 103,
+  "last_request_time": "2026-03-28T10:10:54.166899",
+  "quota_exceeded": true,
+  "daily_limit": 20,
+  "total_requests_ever": 103,
+  "first_use_date": "2026-03-26",
+  "api_errors": 1,
+  "local_llm_fallbacks": 43
+}

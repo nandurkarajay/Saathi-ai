@@ -2,13 +2,12 @@ import pyttsx3
 import os
 from datetime import datetime
 
-def text_to_speech(text, output_dir="data/audio", use_male_voice=False):
+def text_to_speech(text, output_dir="data/audio"):
     """
     Convert text to speech and save as audio file
     Args:
         text (str): Text to convert to speech
         output_dir (str): Directory to save audio file
-        use_male_voice (bool): If True, uses male voice; if False, uses female voice
     """
     try:
         # Create output directory if it doesn't exist
@@ -21,27 +20,10 @@ def text_to_speech(text, output_dir="data/audio", use_male_voice=False):
         engine.setProperty('rate', 120)  # slower for elderly
         engine.setProperty('volume', 0.9)  # Volume level (0.0 to 1.0)
         
-        # Get available voices
+        # Use system default voice (Ravi if set as default in Windows)
+        # The system default will be used automatically
         voices = engine.getProperty('voices')
-        
-        # Select voice based on preference
-        selected_voice = None
-        for voice in voices:
-            voice_name = voice.name.lower()
-            if use_male_voice:
-                if 'david' in voice_name or 'male' in voice_name:
-                    selected_voice = voice.id
-                    break
-            else:
-                if 'zira' in voice_name or 'female' in voice_name:
-                    selected_voice = voice.id
-                    break
-        
-        # If preferred voice type not found, use the first available voice
-        if selected_voice:
-            engine.setProperty('voice', selected_voice)
-        elif voices:
-            engine.setProperty('voice', voices[0].id)
+        print(f"🔊 Using voice: {voices[0].name if voices else 'Default'}")
         
         # Generate filename with timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -58,12 +40,11 @@ def text_to_speech(text, output_dir="data/audio", use_male_voice=False):
         print(f"❌ TTS Error: {e}")
         return None
 
-def speak_text(text, use_male_voice=False):
+def speak_text(text):
     """
     Speak text directly without saving to file
     Args:
         text (str): Text to speak
-        use_male_voice (bool): If True, uses male voice; if False, uses female voice
     """
     if not text:
         print("❌ TTS Error: Empty text provided")
@@ -76,29 +57,13 @@ def speak_text(text, use_male_voice=False):
         engine.setProperty('rate', 150)     # Speed - slightly slower
         engine.setProperty('volume', 0.9)   # Volume - clear but not too loud
         
-        # Get available voices
+        # Use system default voice (Ravi if set as default in Windows)
         voices = engine.getProperty('voices')
         if not voices:
             print("⚠️ No TTS voices found. Please check system TTS settings.")
             return
             
-        # Select voice based on preference
-        selected_voice = None
-        for voice in voices:
-            voice_name = voice.name.lower()
-            if use_male_voice and ('david' in voice_name or 'male' in voice_name):
-                selected_voice = voice.id
-                break
-            elif not use_male_voice and ('zira' in voice_name or 'female' in voice_name):
-                selected_voice = voice.id
-                break
-        
-        # If preferred voice not found, use first available
-        if selected_voice:
-            engine.setProperty('voice', selected_voice)
-        else:
-            engine.setProperty('voice', voices[0].id)
-            print("⚠️ Preferred voice not found, using default voice")
+        print(f"🔊 Using voice: {voices[0].name if voices else 'Default'}")
         
         print(f"🔊 Speaking: {text}")
         engine.say(text)

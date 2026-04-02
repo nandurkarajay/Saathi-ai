@@ -305,9 +305,8 @@ cleanup.ps1
 cleanup_bad_reminders.py
 cleanup_project.py
 
-# ignore whisper.cpp and models folders since models will be pushed separately
-# whisper.cpp/ - keep whisper.cpp but exclude models folder
-models/
+# models folder is now included
+# models/ - keeping models folder tracked
 
 # ignore task_manager.log
 *.log

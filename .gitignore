@@ -283,11 +283,14 @@ venv/
 # Cython debug symbols
 cython_debug/
 
-# audio files
+# audio files (except in songs folder)
 *.wav
 *.mp3
 *.flac
 *.ogg
+
+# allow mp3 files in songs folder
+!songs/*.mp3
 
 # database files
 *.db

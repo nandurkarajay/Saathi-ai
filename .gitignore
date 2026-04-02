@@ -309,8 +309,7 @@ models/
 # ignore task_manager.log
 *.log
 
-# ignore sathi.db and sathi_tasks.db
-sathi.db
+# ignore sathi_tasks.db but keep sathi.db
 sathi_tasks.db
 
 # ignore data/chat_context.txt

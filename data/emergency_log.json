@@ -166,5 +166,26 @@
     "emergency_level": "second_alert",
     "emergency_status": "no_response",
     "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-03-28T11:15:33.563986",
+    "user_input": "I am feeling alone. It's hurting, hurting.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-03-28T11:15:33.563986",
+    "user_input": "I am feeling alone. It's hurting, hurting.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-03-28T11:15:33.563986",
+    "user_input": "I am feeling alone. It's hurting, hurting.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
   }
 ]

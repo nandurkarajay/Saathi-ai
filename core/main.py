@@ -203,26 +203,33 @@ def sathi_interaction(skip_wake_check=True, sleep_mode=False):
                 time.sleep(0.5)
                 continue
             
-            sleep_transcription = transcribe_audio(sleep_audio, is_wake_word=True, delete_after=True)
-            
-            if sleep_transcription:
-                # Check for wake word (multi-language support)
-                if MULTI_LANGUAGE_ENABLED:
-                    # Try multi-language wake word detection
-                    transcribed, wake_lang = voice_processor.transcribe_audio(
-                        sleep_audio, is_wake_word=True, target_language=None
-                    )
-                    if transcribed:
-                        wake_words = language_manager.get_wake_words(wake_lang)
-                        transcription_lower = transcribed.lower()
-                        wake_detected = any(wake_word in transcription_lower for wake_word in wake_words)
-                    else:
-                        wake_detected = False
+            # Use appropriate transcription method based on multi-language support
+            if MULTI_LANGUAGE_ENABLED:
+                # Multi-language wake word detection
+                transcribed, wake_lang = voice_processor.transcribe_audio(
+                    sleep_audio, is_wake_word=True, target_language=None
+                )
+                
+                if transcribed and transcribed.strip():
+                    wake_words = language_manager.get_wake_words(wake_lang)
+                    transcription_lower = transcribed.lower()
+                    wake_detected = any(wake_word in transcription_lower for wake_word in wake_words)
+                    sleep_transcription = transcribed
                 else:
-                    # Fallback to original wake word detection
+                    wake_detected = False
+                    sleep_transcription = None
+            else:
+                # Fallback to original wake word detection
+                sleep_transcription = transcribe_audio(sleep_audio, is_wake_word=True, delete_after=True)
+                
+                if sleep_transcription and sleep_transcription.strip():
                     wake_score = is_wake_word(sleep_transcription)
                     wake_detected = wake_score >= 0.6
-                
+                else:
+                    wake_detected = False
+            
+            # Only process if we got some transcription
+            if sleep_transcription and sleep_transcription.strip():
                 if wake_detected:
                     print(f"\n{'─' * 60}")
                     print("Wake Up - Sleep mode ended")
@@ -241,6 +248,10 @@ def sathi_interaction(skip_wake_check=True, sleep_mode=False):
                 else:
                     # In sleep mode, just listen, don't respond
                     print(f"Heard: '{sleep_transcription}' (still sleeping)")
+            else:
+                # No transcription received, continue listening
+                print("No speech detected, still sleeping...")
+                time.sleep(0.1)
         
         return
     

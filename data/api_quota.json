@@ -1,11 +1,11 @@
 {
-  "date": "2026-03-26",
-  "requests_made": 133,
-  "last_request_time": "2026-03-28T11:55:50.592953",
+  "date": "2026-04-25",
+  "requests_made": 3,
+  "last_request_time": "2026-04-25T09:58:23.979836",
   "quota_exceeded": true,
   "daily_limit": 20,
-  "total_requests_ever": 133,
+  "total_requests_ever": 136,
   "first_use_date": "2026-03-26",
-  "api_errors": 1,
-  "local_llm_fallbacks": 44
+  "api_errors": 50,
+  "local_llm_fallbacks": 104
 }

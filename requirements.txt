@@ -12,3 +12,4 @@ flask==3.0.0
 schedule==1.2.0
 llama-cpp-python
 pygame
+twilio

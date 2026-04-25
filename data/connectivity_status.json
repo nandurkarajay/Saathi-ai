@@ -1,0 +1,10 @@
+{
+  "last_online_time": null,
+  "last_offline_time": "2026-04-25T08:37:11.469833",
+  "current_status": "offline",
+  "consecutive_failures": 1,
+  "consecutive_successes": 0,
+  "total_checks": 1,
+  "offline_duration": 0,
+  "last_check_timestamp": 1777086431.4666553
+}

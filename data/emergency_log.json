@@ -187,5 +187,152 @@
     "emergency_level": "second_alert",
     "emergency_status": "no_response",
     "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-04-23T16:54:14.866607",
+    "user_input": "It's hurting, it's hurting.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-04-23T16:54:14.866607",
+    "user_input": "It's hurting, it's hurting.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-04-23T16:54:14.866607",
+    "user_input": "It's hurting, it's hurting.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-04-24T14:10:36.596023",
+    "user_input": "emergency.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-04-24T14:10:36.596023",
+    "user_input": "emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-04-24T14:10:36.596023",
+    "user_input": "emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-04-24T14:19:08.924489",
+    "user_input": "emergency.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-04-24T14:19:08.924489",
+    "user_input": "emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-04-24T14:19:08.924489",
+    "user_input": "emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-04-24T14:23:58.607506",
+    "user_input": "its emergency.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-04-24T14:23:58.607506",
+    "user_input": "its emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-04-24T14:23:58.607506",
+    "user_input": "its emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-04-24T16:44:47.955405",
+    "user_input": "its emergency.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-04-24T16:44:47.955405",
+    "user_input": "its emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-04-24T16:44:47.955405",
+    "user_input": "its emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-04-25T09:50:18.154765",
+    "user_input": "its emergency.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-04-25T09:50:18.154765",
+    "user_input": "its emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-04-25T09:50:18.154765",
+    "user_input": "its emergency.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
+  },
+  {
+    "timestamp": "2026-04-25T09:57:15.681184",
+    "user_input": "I need help, please.",
+    "emergency_level": "first_alert",
+    "emergency_status": "detected",
+    "event_type": "emergency_detected"
+  },
+  {
+    "timestamp": "2026-04-25T09:57:15.681184",
+    "user_input": "I need help, please.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "email_sent"
+  },
+  {
+    "timestamp": "2026-04-25T09:57:15.681184",
+    "user_input": "I need help, please.",
+    "emergency_level": "second_alert",
+    "emergency_status": "no_response",
+    "event_type": "no_response_final"
   }
 ]

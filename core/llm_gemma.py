@@ -1,24 +1,34 @@
 import google.generativeai as genai
 from .elderly_personality import personality_engine
 from .api_quota_manager import can_make_api_request, record_api_request, handle_quota_error, get_quota_info
+import logging
+import time
+from datetime import datetime
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
 
-
-# Configure API Key
-
-GEMINI_API_KEY = "AIzaSyBUZd3RKBJA3sZWvpoa2-pJAabCbNyBCtc"
+# Configure API Key from environment variables
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
 
 try:
-
-    genai.configure(api_key=GEMINI_API_KEY)
-
-    print("[OK] Successfully configured Gemini API")
+    if GEMINI_API_KEY:
+        genai.configure(api_key=GEMINI_API_KEY)
+        print("[OK] Successfully configured Gemini API")
+    else:
+        print("[WARNING] GEMINI_API_KEY not found in environment variables")
+        print("Please set up your .env file with GEMINI_API_KEY")
+        print("See .env.example for reference")
 
 except Exception as e:
 
     print(f"[ERROR] Failed to configure Gemini API: {e}")
 
-    raise
+
+# Model will be initialized in the query function to ensure fresh state
 
 
 

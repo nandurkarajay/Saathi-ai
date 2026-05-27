@@ -48,7 +48,8 @@ pip install -r requirements.txt
 
 ### 4. Download Whisper.cpp Model
 
-**[⬇️ Download Model from Drive](#)** *(Link to be provided)*
+Download Model from Drive-https://drive.google.com/file/d/152h8GcpSpMAeIr27Ax9inmYWHVd4hzJx/view?usp=drive_link
+Offline Model- Huggingface 
 
 Extract the model file and place it in the `models/` directory:
 ```
@@ -146,6 +147,7 @@ make
 The application supports two LLM backends:
 
 **1. Local Quantized Model (Default)**
+-Self Quantized
 - Model: Qwen1.5-1.8B quantized
 - Size: ~1.2GB
 - Inference Speed: ~2-5 tokens/second

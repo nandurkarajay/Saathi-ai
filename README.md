@@ -49,6 +49,8 @@ pip install -r requirements.txt
 ### 4. Download Whisper.cpp Model
 
 Download Model from Drive-https://drive.google.com/file/d/152h8GcpSpMAeIr27Ax9inmYWHVd4hzJx/view?usp=drive_link
+
+
 Offline Model- Huggingface 
 
 Extract the model file and place it in the `models/` directory:

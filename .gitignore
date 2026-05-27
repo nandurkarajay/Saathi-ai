@@ -323,3 +323,6 @@ core/__pycache__/
 
 # ignore tools folder
 tools/
+
+# Ignore all test files
+test_*.py
